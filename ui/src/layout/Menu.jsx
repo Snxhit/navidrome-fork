@@ -142,15 +142,18 @@ const Menu = ({ dense = false }) => {
       )}
     </div>
 
-    <Divider />
+    <>
+      <Divider />
+  
+      <MenuItemLink
+        to="/feedback"
+        primaryText="Feedback"
+        leftIcon={<EditNoteIcon />}
+        sidebarIsOpen={open}
+        dense={dense}
+      />
+    </>
 
-    <MenuItemLink
-      to="/feedback"
-      primaryText="Feedback"
-      leftIcon={<EditNoteIcon />}
-      sidebarIsOpen={open}
-      dense={dense}
-    />
 
   )
 }
