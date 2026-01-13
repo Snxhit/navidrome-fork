@@ -5,7 +5,7 @@ import clsx from 'clsx'
 import { useTranslate, MenuItemLink, getResources } from 'react-admin'
 import ViewListIcon from '@material-ui/icons/ViewList'
 import AlbumIcon from '@material-ui/icons/Album'
-import EditNoteIcon from '@material-ui/icons/EditNote'
+import NoteAddIcon from '@material-ui/icons/NoteAdd'
 import SubMenu from './SubMenu'
 import { humanize, pluralize } from 'inflection'
 import albumLists from '../album/albumLists'
@@ -150,7 +150,7 @@ const Menu = ({ dense = false }) => {
         <MenuItemLink
           to="/feedback"
           primaryText="Feedback"
-          leftIcon={<EditNoteIcon />}
+          leftIcon={<NoteAddIcon />}
           sidebarIsOpen={open}
           dense={dense}
         />
