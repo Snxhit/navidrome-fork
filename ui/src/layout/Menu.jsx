@@ -107,54 +107,55 @@ const Menu = ({ dense = false }) => {
     resource.hasList && resource.options && resource.options.subMenu === subMenu
 
   return (
-    <div
-      className={clsx(classes.root, {
-        [classes.open]: open,
-        [classes.closed]: !open,
-      })}
-    >
-      {open && <LibrarySelector />}
-      <SubMenu
-        handleToggle={() => handleToggle('menuAlbumList')}
-        isOpen={state.menuAlbumList}
-        sidebarIsOpen={open}
-        name="menu.albumList"
-        icon={<AlbumIcon />}
-        dense={dense}
-      >
-        {Object.keys(albumLists).map((type) =>
-          renderAlbumMenuItemLink(type, albumLists[type]),
-        )}
-      </SubMenu>
-      {resources.filter(subItems(undefined)).map(renderResourceMenuItemLink)}
-      {config.devSidebarPlaylists && open ? (
-        <>
-          <Divider />
-          <PlaylistsSubMenu
-            state={state}
-            setState={setState}
-            sidebarIsOpen={open}
-            dense={dense}
-          />
-        </>
-      ) : (
-        resources.filter(subItems('playlist')).map(renderResourceMenuItemLink)
-      )}
-    </div>
-
     <>
-      <Divider />
+      <div
+        className={clsx(classes.root, {
+          [classes.open]: open,
+          [classes.closed]: !open,
+        })}
+      >
+        {open && <LibrarySelector />}
   
-      <MenuItemLink
-        to="/feedback"
-        primaryText="Feedback"
-        leftIcon={<EditNoteIcon />}
-        sidebarIsOpen={open}
-        dense={dense}
-      />
+        <SubMenu
+          handleToggle={() => handleToggle('menuAlbumList')}
+          isOpen={state.menuAlbumList}
+          sidebarIsOpen={open}
+          name="menu.albumList"
+          icon={<AlbumIcon />}
+          dense={dense}
+        >
+          {Object.keys(albumLists).map((type) =>
+            renderAlbumMenuItemLink(type, albumLists[type]),
+          )}
+        </SubMenu>
+  
+        {resources.filter(subItems(undefined)).map(renderResourceMenuItemLink)}
+  
+        {config.devSidebarPlaylists && open ? (
+          <>
+            <Divider />
+            <PlaylistsSubMenu
+              state={state}
+              setState={setState}
+              sidebarIsOpen={open}
+              dense={dense}
+            />
+          </>
+        ) : (
+          resources.filter(subItems('playlist')).map(renderResourceMenuItemLink)
+        )}
+  
+        {/* YOUR CUSTOM ITEM */}
+        <Divider />
+        <MenuItemLink
+          to="/feedback"
+          primaryText="Feedback"
+          leftIcon={<EditNoteIcon />}
+          sidebarIsOpen={open}
+          dense={dense}
+        />
+      </div>
     </>
-
-
   )
 }
 
