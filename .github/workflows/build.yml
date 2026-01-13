@@ -18,7 +18,18 @@ jobs:
         with:
           go-version: '1.21'
 
-      - name: Build
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: Install frontend deps
+        run: |
+          cd ui
+          npm ci
+
+      - name: Build Navidrome
         run: |
           make build
 
