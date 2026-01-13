@@ -5,6 +5,7 @@ import clsx from 'clsx'
 import { useTranslate, MenuItemLink, getResources } from 'react-admin'
 import ViewListIcon from '@material-ui/icons/ViewList'
 import AlbumIcon from '@material-ui/icons/Album'
+import EditNoteIcon from '@material-ui/icons/EditNote'
 import SubMenu from './SubMenu'
 import { humanize, pluralize } from 'inflection'
 import albumLists from '../album/albumLists'
@@ -140,6 +141,17 @@ const Menu = ({ dense = false }) => {
         resources.filter(subItems('playlist')).map(renderResourceMenuItemLink)
       )}
     </div>
+
+    <Divider />
+
+    <MenuItemLink
+      to="/feedback"
+      primaryText="Feedback"
+      leftIcon={<EditNoteIcon />}
+      sidebarIsOpen={open}
+      dense={dense}
+    />
+
   )
 }
 
